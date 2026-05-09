@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  background:
+    radial-gradient(1200px 800px at 20% 0%, #1a1d2e 0%, transparent 60%),
+    radial-gradient(900px 700px at 100% 100%, #1d1426 0%, transparent 60%),
+    #0d0e14;
+  color: #dde1ee;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* CRT scanline overlay */
+.crt-on::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.18) 0px,
+    rgba(0, 0, 0, 0.18) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  mix-blend-mode: multiply;
+  z-index: 30;
+}
+
+.crt-on::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 60%, rgba(0, 0, 0, 0.45) 100%);
+  z-index: 29;
+}
+
+.thumb-btn {
+  @apply relative flex items-center justify-center rounded-md border border-white/5 bg-ink-700/60 hover:bg-ink-600/70 transition-colors;
+}
+
+.thumb-btn[data-active='true'] {
+  @apply border-accent/70 bg-ink-600 ring-1 ring-accent/40;
+}
+
+.swatch-btn {
+  @apply h-6 w-6 rounded-md border border-black/30 transition-transform hover:scale-110;
+}
+
+.swatch-btn[data-active='true'] {
+  @apply ring-2 ring-white ring-offset-2 ring-offset-ink-800 scale-110;
+}
+
+.section-card {
+  @apply rounded-xl bg-ink-800/70 backdrop-blur border border-white/5 shadow-panel overflow-hidden;
+}
+
+.btn {
+  @apply inline-flex items-center gap-2 rounded-md px-3 py-1.5 text-sm font-medium transition-colors border border-white/5;
+}
+
+.btn-primary {
+  @apply bg-accent/90 text-ink-900 hover:bg-accent border-accent/60;
+}
+
+.btn-ghost {
+  @apply bg-ink-700/60 text-ink-100 hover:bg-ink-600;
+}
